@@ -66,7 +66,6 @@ class WebDriverPool {
 	 * @throws IOException
 	 */
 	public void configure() throws IOException {
-		// Read config file
 		sConfig = new Properties();
 		String configFile = DEFAULT_CONFIG_FILE;
 		if (System.getProperty("selenuim_config")!=null){
@@ -198,8 +197,6 @@ class WebDriverPool {
 		if (webDriverList.size() < capacity) {
 			synchronized (webDriverList) {
 				if (webDriverList.size() < capacity) {
-
-					// add new WebDriver instance into pool
 					try {
 						configure();
 						innerQueue.add(mDriver);

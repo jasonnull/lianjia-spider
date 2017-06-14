@@ -11,6 +11,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
 
+import java.util.Date;
 import java.util.Map;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
@@ -59,6 +60,7 @@ public class LianjiaPipeline implements Pipeline {
             house.setArea(Float.parseFloat(area.substring(0, area.length() - 1)));
             house.setAveragePrice(Integer.parseInt(averagePrice));
             house.setNo(no);
+            house.setCollectedAt(new Date());
 
             // delete old house data
             mongoTemplate.remove(Query.query(where("no").is(no)), House.class);
